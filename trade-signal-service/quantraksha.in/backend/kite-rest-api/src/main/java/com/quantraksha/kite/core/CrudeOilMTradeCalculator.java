@@ -3,16 +3,19 @@ package com.quantraksha.kite.core;
 import com.quantraksha.kite.core.model.Levels;
 import com.quantraksha.kite.core.model.TradeCapture;
 
+import java.time.LocalDate;
+
 
 public class CrudeOilMTradeCalculator extends ITradeCalculator{
 
     private final static double entryBuffer = 0.4;
     private final static double exitBuffer = 4;
+    private final static int LOT_SIZE = 100;
 
     public CrudeOilMTradeCalculator() {
         setStrategyName("CRUDEOIL-M-FUTURE-HH-LL");
+
         setTotalCapitalRequired(600000.00);
-        setBufferCapitalRequiredAsPerRisk(40000.00);
         setBufferCapitalRequiredAsPerRisk(200000.00);
         setRiskForTrade(70000.00);
     }
@@ -28,11 +31,14 @@ public class CrudeOilMTradeCalculator extends ITradeCalculator{
 
 
         tradeCapture.setInstrumentToken(levels.instrumentToken());
+        tradeCapture.setStrategyName(getStrategyName());
+        tradeCapture.setEntryDate(LocalDate.parse(levels.to()));
+        tradeCapture.setLotSize(CrudeOilMTradeCalculator.LOT_SIZE);
+
         tradeCapture.setCalcEntryPrice(entryPrice);
         tradeCapture.setCalcTargetPrice(targetPrice);
         tradeCapture.setCalcStopLoss(stopLossPrice);
         tradeCapture.setCalcTrailingStopLoss(asmStopLossPrice);
-        tradeCapture.setEntryDate(levels.to());
 
         return tradeCapture;
     }

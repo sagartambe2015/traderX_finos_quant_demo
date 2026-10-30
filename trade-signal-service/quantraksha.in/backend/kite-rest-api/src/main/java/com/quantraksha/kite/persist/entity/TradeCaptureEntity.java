@@ -13,7 +13,7 @@ import java.time.LocalTime;
 public class TradeCaptureEntity {
 
     @Id
-    @Column(name = "CaptureID", length = 64, nullable = false)
+    @Column(name = "SignalID", length = 64, nullable = false)
     private String captureId;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -22,6 +22,9 @@ public class TradeCaptureEntity {
 
     @Column(name = "Security", length = 64, nullable = false)
     private String security;
+
+    @Column(name = "InstrumentID", length = 64, nullable = false)
+    private String instrumentId;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "Side", length = 10, nullable = false)
@@ -94,7 +97,7 @@ public class TradeCaptureEntity {
     @Column(name = "GoNoDecision", length = 10, nullable = false)
     private GoNoDecision goNoDecision;
 
-    @Column(name = "CaptureTimestamp", updatable = false)
+    @Column(name = "SignalTimestamp", updatable = false)
     private LocalDateTime captureTimestamp = LocalDateTime.now();
 
     // Constructors
@@ -300,4 +303,14 @@ public class TradeCaptureEntity {
     public void setCaptureTimestamp(LocalDateTime captureTimestamp) {
         this.captureTimestamp = captureTimestamp;
     }
+
+
+    public String getInstrumentId() {
+        return instrumentId;
+    }
+
+    public void setInstrumentId(String instrumentId) {
+        this.instrumentId = instrumentId;
+    }
+
 }

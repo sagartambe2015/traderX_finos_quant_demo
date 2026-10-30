@@ -1,15 +1,23 @@
 package com.quantraksha.kite.core.model;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 public class TradeCapture {
     long entryTime;
     long exitTime;
-    String entryDate;
-    String exitDate;
+    LocalDate entryDate;
+    LocalDate exitDate;
     long quantity;
     long tradeId;
 
     String strategyName;
     String instrumentToken;
+
+
+    String contractName;
+    String side;
+    int lotSize;
 
     double actualEntryPrice;
     double actualExitPrice;
@@ -38,19 +46,19 @@ public class TradeCapture {
         this.exitTime = exitTime;
     }
 
-    public String getEntryDate() {
+    public LocalDate getEntryDate() {
         return entryDate;
     }
 
-    public void setEntryDate(String entryDate) {
+    public void setEntryDate(LocalDate entryDate) {
         this.entryDate = entryDate;
     }
 
-    public String getExitDate() {
+    public LocalDate getExitDate() {
         return exitDate;
     }
 
-    public void setExitDate(String exitDate) {
+    public void setExitDate(LocalDate exitDate) {
         this.exitDate = exitDate;
     }
 
@@ -151,6 +159,32 @@ public class TradeCapture {
 
     public void setStrategyName(String strategyName) {
         this.strategyName = strategyName;
+    }
+
+
+
+    public String getContractName() {
+        return contractName;
+    }
+
+    public void setContractName(String contractName) {
+        this.contractName = contractName;
+    }
+
+    public String getSide() {
+        return side;
+    }
+
+    public void setSide(String side) {
+        this.side = side;
+    }
+
+    public int getLotSize() {
+        return lotSize;
+    }
+
+    public void setLotSize(int lotSize) {
+        this.lotSize = lotSize;
     }
 
     @Override

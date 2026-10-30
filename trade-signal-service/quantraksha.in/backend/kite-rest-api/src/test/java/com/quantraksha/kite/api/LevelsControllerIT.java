@@ -11,7 +11,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.quantraksha.kite.core.session.KiteSessionService;
 import java.time.LocalDate;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -31,8 +30,6 @@ class LevelsControllerIT {
     @MockitoBean
     private KiteSessionService kite;
 
-    @Disabled("bug: LevelsController never injects levelCalculatorService (constructor only takes kite),"
-            + " so every /api/levels call throws NullPointerException")
     @Test
     void twoDayHighAndLow() throws Exception {
         LocalDate today = todayIst();

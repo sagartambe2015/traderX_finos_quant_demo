@@ -2,7 +2,6 @@ package com.quantraksha.kite.api;
 
 import com.quantraksha.kite.core.model.Levels;
 import com.quantraksha.kite.core.service.LevelCalculatorService;
-import com.quantraksha.kite.core.session.KiteSessionService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,12 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class LevelsController {
 
-    private final KiteSessionService kite;
+    private final LevelCalculatorService levelCalculatorService;
 
-    private LevelCalculatorService levelCalculatorService;
-
-    public LevelsController(KiteSessionService kite) {
-        this.kite = kite;
+    public LevelsController(LevelCalculatorService levelCalculatorService) {
+        this.levelCalculatorService = levelCalculatorService;
     }
 
     @GetMapping("/levels/{instrumentToken}")

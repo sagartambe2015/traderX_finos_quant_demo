@@ -13,7 +13,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.quantraksha.kite.core.session.KiteSessionService;
 import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -56,6 +55,7 @@ class TradeCaptureControllerIT {
         mvc.perform(get("/api/calculateTrade/nse/15736578"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.instrumentToken").value("15736578"))
+                .andExpect(jsonPath("$.strategyName").value("Nifty-FUTURE-HH-LL"))
                 .andExpect(jsonPath("$.calcEntryPrice").value(24041.0))
                 .andExpect(jsonPath("$.calcTargetPrice").value(24342.0))
                 .andExpect(jsonPath("$.calcStopLoss").value(23741.0))
@@ -70,6 +70,8 @@ class TradeCaptureControllerIT {
         mvc.perform(get("/api/calculateTrade/mcx/146796039"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.instrumentToken").value("146796039"))
+                .andExpect(jsonPath("$.strategyName").value("CRUDEOIL-M-FUTURE-HH-LL"))
+                .andExpect(jsonPath("$.entryDate").value(today.minusDays(1).toString()))
                 .andExpect(jsonPath("$.calcEntryPrice").value(6035.0))
                 .andExpect(jsonPath("$.calcTargetPrice").value(6277.0))
                 .andExpect(jsonPath("$.calcStopLoss").value(5794.0))
@@ -124,16 +126,25 @@ class TradeCaptureControllerIT {
                 .andExpect(jsonPath("$.error_type").value("DataException"));
     }
 
-    @Disabled("bug: /calculateTrade/mcx/{token} always uses CrudeOilMTradeCalculator, so a GOLDM token gets"
-            + " crude's 0.4%/4% buffers instead of GOLDM's 0.12%/1.5%")
     @Test
-    void mcxGoldMTokenUsesGoldMBuffers() throws Exception {
+    void goldMRouteUsesGoldMBuffers() throws Exception {
         kiteReturnsTwoDaysWithHighAndLow(78010, 77550);
 
-        // Replace with the real GOLDM futures instrument token
-        mvc.perform(get("/api/calculateTrade/mcx/1"))
+        mvc.perform(get("/api/calculateTrade/mcx/goldm/1"))
                 .andExpect(status().isOk())
+                .andExpect(jsonPath("$.strategyName").value("GOLDM-M-FUTURE-HH-LL"))
                 .andExpect(jsonPath("$.calcEntryPrice").value(78104.0))
                 .andExpect(jsonPath("$.calcTargetPrice").value(79276.0));
+    }
+
+    @Test
+    void silverMRouteUsesSilverMBuffers() throws Exception {
+        kiteReturnsTwoDaysWithHighAndLow(96000, 95000);
+
+        mvc.perform(get("/api/calculateTrade/mcx/silverm/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.strategyName").value("SILVERMM-FUTURE-HH-LL"))
+                .andExpect(jsonPath("$.calcEntryPrice").value(96116.0))
+                .andExpect(jsonPath("$.calcTargetPrice").value(98039.0));
     }
 }

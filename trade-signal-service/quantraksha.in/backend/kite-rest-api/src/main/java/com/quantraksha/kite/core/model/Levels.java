@@ -2,6 +2,7 @@ package com.quantraksha.kite.core.model;
 
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 /** from/to are the dates of the first and last candle used */

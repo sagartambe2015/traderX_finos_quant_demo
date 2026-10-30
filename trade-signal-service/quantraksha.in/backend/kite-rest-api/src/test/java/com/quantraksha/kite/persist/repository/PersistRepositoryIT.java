@@ -37,7 +37,8 @@ class PersistRepositoryIT {
         t.setCaptureId(id);
         t.setStrategy(strategy);
         t.setSecurity("NIFTY25NOVFUT");
-        t.setSide(TradeSide.BUY);
+        t.setInstrumentId("15736578");
+        t.setSide(TradeSide.LONG);
         t.setLotSize(75);
         t.setTargetQuantity(new BigDecimal("75"));
         t.setEntryDate(LocalDate.of(2026, 10, 30));
@@ -74,5 +75,22 @@ class PersistRepositoryIT {
         assertThat(captures.findBySecurityAndEntryDate("NIFTY25NOVFUT", LocalDate.of(2026, 10, 30))).hasSize(1);
         assertThat(captures.findByEntryDateBetween(LocalDate.of(2026, 10, 1), LocalDate.of(2026, 10, 31)))
                 .hasSize(1);
+    }
+
+    @Test
+    void findsTradeCapturesByEntryDateSecurityAndInstrument() {
+        StrategyEntity strategy = strategies.save(new StrategyEntity("NIFTY-HH-LL", "Nifty-FUTURE-HH-LL"));
+        captures.saveAndFlush(capture("C1", strategy));
+        LocalDate entryDate = LocalDate.of(2026, 10, 30);
+
+        assertThat(captures.existsByEntryDateAndSecurityAndInstrumentId(entryDate, "NIFTY25NOVFUT", "15736578")).isTrue();
+        assertThat(captures.existsByEntryDateAndSecurityAndInstrumentId(entryDate.plusDays(1), "NIFTY25NOVFUT", "15736578")).isFalse();
+        assertThat(captures.existsByEntryDateAndSecurityAndInstrumentId(entryDate, "OTHER", "15736578")).isFalse();
+        assertThat(captures.existsByEntryDateAndSecurityAndInstrumentId(entryDate, "NIFTY25NOVFUT", "1")).isFalse();
+        assertThat(captures.findByEntryDateAndSecurityAndInstrumentId(entryDate, "NIFTY25NOVFUT", "15736578"))
+                .get()
+                .extracting(TradeCaptureEntity::getCaptureId)
+                .isEqualTo("C1");
+        assertThat(captures.findByEntryDateAndSecurityAndInstrumentId(entryDate, "NIFTY25NOVFUT", "1")).isEmpty();
     }
 }

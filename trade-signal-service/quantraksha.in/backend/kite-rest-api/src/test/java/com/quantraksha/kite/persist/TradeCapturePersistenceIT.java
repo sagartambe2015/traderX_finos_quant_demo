@@ -36,7 +36,8 @@ class TradeCapturePersistenceIT {
         t.setCaptureId(id);
         t.setStrategy(strategy);
         t.setSecurity("NIFTY25NOVFUT");
-        t.setSide(TradeSide.BUY);
+        t.setInstrumentId("15736578");
+        t.setSide(TradeSide.LONG);
         t.setLotSize(75);
         t.setTargetQuantity(new BigDecimal("75"));
         t.setEntryDate(LocalDate.of(2026, 10, 30));
@@ -65,7 +66,8 @@ class TradeCapturePersistenceIT {
         assertThat(reloaded.getCreatedDate()).isNotNull();
         assertThat(reloaded.getTradeCaptures()).singleElement().satisfies(t -> {
             assertThat(t.getCaptureId()).isEqualTo("C1");
-            assertThat(t.getSide()).isEqualTo(TradeSide.BUY);
+            assertThat(t.getInstrumentId()).isEqualTo("15736578");
+            assertThat(t.getSide()).isEqualTo(TradeSide.LONG);
             assertThat(t.getGoNoDecision()).isEqualTo(GoNoDecision.PENDING);
             assertThat(t.getCalcEntry()).isEqualByComparingTo("24041");
             assertThat(t.getEntryTime()).isEqualTo(LocalTime.of(9, 20));

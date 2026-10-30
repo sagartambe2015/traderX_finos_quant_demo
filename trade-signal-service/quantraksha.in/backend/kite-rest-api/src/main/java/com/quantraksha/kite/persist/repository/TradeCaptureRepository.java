@@ -4,6 +4,8 @@ import com.quantraksha.kite.persist.entity.GoNoDecision;
 import com.quantraksha.kite.persist.entity.TradeCaptureEntity;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -24,4 +26,16 @@ public interface TradeCaptureRepository extends JpaRepository<TradeCaptureEntity
 
     /** Captures not yet exited, i.e. open trades. */
     List<TradeCaptureEntity> findByExitDateIsNull();
+
+    boolean existsByEntryDateAndSecurityAndInstrumentId(
+            LocalDate entryDate,
+            String security,
+            String instrumentId
+    );
+
+    Optional<TradeCaptureEntity> findByEntryDateAndSecurityAndInstrumentId(
+            LocalDate entryDate,
+            String security,
+            String instrumentId
+    );
 }

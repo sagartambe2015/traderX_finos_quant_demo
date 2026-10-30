@@ -3,9 +3,12 @@ package com.quantraksha.kite.core;
 import com.quantraksha.kite.core.model.Levels;
 import com.quantraksha.kite.core.model.TradeCapture;
 
+import java.time.LocalDate;
+
 public class NiftyTradeCalculator extends ITradeCalculator{
     private final static double entryBuffer = 0.125;
     private final static double exitBuffer = 1.25;
+    private final static int LOT_SIZE = 65;
 
     public NiftyTradeCalculator() {
         setStrategyName("Nifty-FUTURE-HH-LL");
@@ -24,11 +27,15 @@ public class NiftyTradeCalculator extends ITradeCalculator{
 
 
         tradeCapture.setInstrumentToken(levels.instrumentToken());
+        tradeCapture.setStrategyName(getStrategyName());
+        tradeCapture.setEntryDate(LocalDate.parse(levels.to()));
+        tradeCapture.setLotSize(LOT_SIZE);
+
         tradeCapture.setCalcEntryPrice(entryPrice);
         tradeCapture.setCalcTargetPrice(targetPrice);
         tradeCapture.setCalcStopLoss(stopLossPrice);
         tradeCapture.setCalcTrailingStopLoss(asmStopLossPrice);
-        tradeCapture.setEntryDate(levels.to());
+
         return tradeCapture;
     }
 }

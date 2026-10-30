@@ -19,6 +19,8 @@
 
     <properties>
         <java.version>17</java.version>
+        <!-- Mockito's agent appends to the boot classpath, which makes the JVM warn when class data sharing is on -->
+        <argLine>-Xshare:off</argLine>
     </properties>
 
     <dependencies>
@@ -56,6 +58,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <!-- kiteconnect already brings org.json:json, and both jars contain org.json.JSONObject -->
+            <exclusions>
+                <exclusion>
+                    <groupId>com.vaadin.external.google</groupId>
+                    <artifactId>android-json</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- @Suite classes: UnitTestSuite / IntegrationTestSuite -->
         <dependency>

@@ -22,7 +22,10 @@ spring:
     open-in-view: false
     hibernate:
       # none: Hibernate won't create or check tables; schema.sql / migrations own the schema
-      ddl-auto: ${JPA_DDL_AUTO:none}
+      ddl-auto: ${JPA_DDL_AUTO:create}
+      naming:
+        # Use @Column names as written; the default would turn LotSize into lot_size, but the table has lotsize
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
       hibernate:
         jdbc.time_zone: Asia/Kolkata

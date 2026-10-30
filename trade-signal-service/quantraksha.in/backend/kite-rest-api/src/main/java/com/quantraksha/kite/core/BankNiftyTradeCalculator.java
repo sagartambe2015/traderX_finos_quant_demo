@@ -3,6 +3,8 @@ package com.quantraksha.kite.core;
 import com.quantraksha.kite.core.model.Levels;
 import com.quantraksha.kite.core.model.TradeCapture;
 
+import java.time.LocalDate;
+
 public class BankNiftyTradeCalculator extends ITradeCalculator{
     private final static double entryBuffer = 0.15;
     private final static double exitBuffer = 1.5;
@@ -28,7 +30,8 @@ public class BankNiftyTradeCalculator extends ITradeCalculator{
         tradeCapture.setCalcTargetPrice(targetPrice);
         tradeCapture.setCalcStopLoss(stopLossPrice);
         tradeCapture.setCalcTrailingStopLoss(asmStopLossPrice);
-        tradeCapture.setEntryDate(levels.to());
+        tradeCapture.setStrategyName(getStrategyName());
+        tradeCapture.setEntryDate(LocalDate.parse(levels.to()));
         return tradeCapture;
     }
 }

@@ -7,7 +7,6 @@ import com.quantraksha.kite.core.model.TradeCapture;
 import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Named;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -88,7 +87,6 @@ class TradeCalculatorsTest {
         assertThat(calc.getRiskForTrade()).isEqualTo(20000.00);
     }
 
-    @Disabled("bug: calculateTrade never copies the calculator's strategyName into TradeCapture, so it is always null")
     @ParameterizedTest(name = "{0}")
     @MethodSource("calculators")
     void tradeCarriesStrategyName(Supplier<ITradeCalculator> factory, String strategy) {
@@ -96,10 +94,10 @@ class TradeCalculatorsTest {
         assertThat(trade.getStrategyName()).isEqualTo(strategy);
     }
 
-    @Disabled("bug: CrudeOilM/GOLDM/SILVERM constructors call setBufferCapitalRequiredAsPerRisk twice (40000, then 200000);"
-            + " the first value is overwritten. Update the expected value once the intended field is confirmed")
     @Test
-    void commodityBufferCapitalIsNotOverwritten() {
-        assertThat(new CrudeOilMTradeCalculator().getBufferCapitalRequiredAsPerRisk()).isEqualTo(40000.00);
+    void commodityCalculatorsHoldTheirBufferCapital() {
+        assertThat(new CrudeOilMTradeCalculator().getBufferCapitalRequiredAsPerRisk()).isEqualTo(200000.00);
+        assertThat(new GOLDMTradeCalculator().getBufferCapitalRequiredAsPerRisk()).isEqualTo(200000.00);
+        assertThat(new SILVERMTradeCalculator().getBufferCapitalRequiredAsPerRisk()).isEqualTo(200000.00);
     }
 }

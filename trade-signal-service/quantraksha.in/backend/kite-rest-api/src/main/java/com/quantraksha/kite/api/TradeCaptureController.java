@@ -35,6 +35,16 @@ public class TradeCaptureController {
         return tradeCalculatorService.getTradeCaptureForCrudeOilM(instrumentToken, days);
     }
 
+    @GetMapping("/calculateTrade/mcx/goldm/{instrumentToken}")
+    public TradeCapture calculateEntryForGoldM(@PathVariable String instrumentToken, @RequestParam(defaultValue = "2") int days) {
+        return tradeCalculatorService.getTradeCaptureForGOLDMFuture(instrumentToken, days);
+    }
+
+    @GetMapping("/calculateTrade/mcx/silverm/{instrumentToken}")
+    public TradeCapture calculateEntryForSilverM(@PathVariable String instrumentToken, @RequestParam(defaultValue = "2") int days) {
+        return tradeCalculatorService.getTradeCaptureForSILVERMMFuture(instrumentToken, days);
+    }
+
     @GetMapping("/calculateTrade/nse/{instrumentToken}")
     public TradeCapture calculateEntryForNiftyFuture (@PathVariable String instrumentToken, @RequestParam(defaultValue = "2") int days) {
 

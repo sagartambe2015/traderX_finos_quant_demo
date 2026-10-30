@@ -3,6 +3,8 @@ package com.quantraksha.kite.core;
 import com.quantraksha.kite.core.model.Levels;
 import com.quantraksha.kite.core.model.TradeCapture;
 
+import java.time.LocalDate;
+
 public class SILVERMTradeCalculator extends ITradeCalculator {
 
     private final static double entryBuffer = 0.12;
@@ -11,7 +13,6 @@ public class SILVERMTradeCalculator extends ITradeCalculator {
     public SILVERMTradeCalculator() {
         setStrategyName("SILVERMM-FUTURE-HH-LL");
         setTotalCapitalRequired(600000.00);
-        setBufferCapitalRequiredAsPerRisk(40000.00);
         setBufferCapitalRequiredAsPerRisk(200000.00);
         setRiskForTrade(70000.00);
     }
@@ -31,7 +32,8 @@ public class SILVERMTradeCalculator extends ITradeCalculator {
         tradeCapture.setCalcTargetPrice(targetPrice);
         tradeCapture.setCalcStopLoss(stopLossPrice);
         tradeCapture.setCalcTrailingStopLoss(asmStopLossPrice);
-        tradeCapture.setEntryDate(levels.to());
+        tradeCapture.setStrategyName(getStrategyName());
+        tradeCapture.setEntryDate(LocalDate.parse(levels.to()));
 
         return tradeCapture;
     }
