@@ -14,7 +14,8 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 import com.quantraksha.kite.api.KiteApiException;
-import com.quantraksha.kite.model.Levels;
+import com.quantraksha.kite.core.service.LevelCalculatorService;
+import com.quantraksha.kite.core.model.Levels;
 import com.quantraksha.kite.session.KiteSessionService;
 import com.quantraksha.kite.session.KiteSessionService.KiteCall;
 import com.zerodhatech.kiteconnect.KiteConnect;

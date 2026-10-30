@@ -1,7 +1,7 @@
 package com.quantraksha.kite.core;
 
-import com.quantraksha.kite.model.Levels;
-import com.quantraksha.kite.model.TradeCapture;
+import com.quantraksha.kite.core.model.Levels;
+import com.quantraksha.kite.core.model.TradeCapture;
 
 
 public class GOLDMTradeCalculator extends ITradeCalculator{

@@ -2,8 +2,8 @@ package com.quantraksha.kite.core;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.quantraksha.kite.model.Levels;
-import com.quantraksha.kite.model.TradeCapture;
+import com.quantraksha.kite.core.model.Levels;
+import com.quantraksha.kite.core.model.TradeCapture;
 import org.junit.jupiter.api.Test;
 
 /** The shared price formulas: each adds or subtracts a percentage buffer and rounds up to a whole rupee. */

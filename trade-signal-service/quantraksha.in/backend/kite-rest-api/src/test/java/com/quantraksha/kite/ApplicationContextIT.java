@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.quantraksha.kite.api.LevelsController;
 import com.quantraksha.kite.api.TradeCaptureController;
-import com.quantraksha.kite.service.LevelCalculatorService;
-import com.quantraksha.kite.service.TradeCaptureService;
+import com.quantraksha.kite.core.service.LevelCalculatorService;
+import com.quantraksha.kite.core.service.TradeCaptureService;
 import com.quantraksha.kite.session.KiteSessionService;
 import jakarta.persistence.EntityManagerFactory;
 import org.junit.jupiter.api.Test;

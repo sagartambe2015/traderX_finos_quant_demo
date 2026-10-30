@@ -4,8 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.quantraksha.kite.core.CrudeOilMTradeCalculator;
 import com.quantraksha.kite.core.NiftyTradeCalculator;
-import com.quantraksha.kite.model.Levels;
-import com.quantraksha.kite.model.TradeCapture;
+import com.quantraksha.kite.core.service.TradeCaptureService;
+import com.quantraksha.kite.core.model.Levels;
+import com.quantraksha.kite.core.model.TradeCapture;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 

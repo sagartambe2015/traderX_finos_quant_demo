@@ -8,7 +8,9 @@ com/quantraksha/kite/KiteRestApplication.class
 com/quantraksha/kite/config/WebConfig.class
 com/quantraksha/kite/session/KiteSessionService$KiteCall.class
 com/quantraksha/kite/api/ApiExceptionHandler.class
+com/quantraksha/kite/persist/repository/StrategyRepository.class
 com/quantraksha/kite/api/SessionController$LoginRequest.class
+com/quantraksha/kite/persist/repository/TradeCaptureRepository.class
 com/quantraksha/kite/api/SessionController.class
 com/quantraksha/kite/session/KiteSessionService.class
 com/quantraksha/kite/api/SessionController$Status.class

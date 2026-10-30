@@ -1,15 +1,8 @@
 package com.quantraksha.kite.api;
 
-import com.quantraksha.kite.model.Candle;
-import com.quantraksha.kite.model.Levels;
-import com.quantraksha.kite.service.LevelCalculatorService;
+import com.quantraksha.kite.core.model.Levels;
+import com.quantraksha.kite.core.service.LevelCalculatorService;
 import com.quantraksha.kite.session.KiteSessionService;
-import com.zerodhatech.models.HistoricalData;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
-import java.util.List;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

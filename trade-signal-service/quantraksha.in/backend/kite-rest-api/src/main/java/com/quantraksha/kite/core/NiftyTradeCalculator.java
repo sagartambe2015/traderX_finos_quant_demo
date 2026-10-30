@@ -1,7 +1,7 @@
 package com.quantraksha.kite.core;
 
-import com.quantraksha.kite.model.Levels;
-import com.quantraksha.kite.model.TradeCapture;
+import com.quantraksha.kite.core.model.Levels;
+import com.quantraksha.kite.core.model.TradeCapture;
 
 public class NiftyTradeCalculator extends ITradeCalculator{
     private final static double entryBuffer = 0.125;
