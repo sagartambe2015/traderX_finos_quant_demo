@@ -1,6 +1,6 @@
 package com.quantraksha.kite.api;
 
-import com.quantraksha.kite.session.KiteSessionService;
+import com.quantraksha.kite.core.session.KiteSessionService;
 import com.zerodhatech.models.LTPQuote;
 import com.zerodhatech.models.OHLCQuote;
 import com.zerodhatech.models.Quote;

@@ -1,4 +1,4 @@
-package com.quantraksha.kite.session;
+package com.quantraksha.kite.core.session;
 
 import com.quantraksha.kite.api.KiteApiException;
 import com.quantraksha.kite.config.KiteProperties;

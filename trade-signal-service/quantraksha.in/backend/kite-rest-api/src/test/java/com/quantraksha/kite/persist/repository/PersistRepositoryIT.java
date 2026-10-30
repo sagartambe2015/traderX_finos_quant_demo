@@ -2,11 +2,11 @@ package com.quantraksha.kite.persist.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.quantraksha.kite.persist.GoNoDecision;
-import com.quantraksha.kite.persist.StrategyEntity;
-import com.quantraksha.kite.persist.TradeCaptureEntity;
-import com.quantraksha.kite.persist.TradeSide;
-import com.quantraksha.kite.session.KiteSessionService;
+import com.quantraksha.kite.persist.entity.GoNoDecision;
+import com.quantraksha.kite.persist.entity.StrategyEntity;
+import com.quantraksha.kite.persist.entity.TradeCaptureEntity;
+import com.quantraksha.kite.persist.entity.TradeSide;
+import com.quantraksha.kite.core.session.KiteSessionService;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;

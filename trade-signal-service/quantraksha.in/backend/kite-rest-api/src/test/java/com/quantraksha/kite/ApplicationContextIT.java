@@ -6,7 +6,7 @@ import com.quantraksha.kite.api.LevelsController;
 import com.quantraksha.kite.api.TradeCaptureController;
 import com.quantraksha.kite.core.service.LevelCalculatorService;
 import com.quantraksha.kite.core.service.TradeCaptureService;
-import com.quantraksha.kite.session.KiteSessionService;
+import com.quantraksha.kite.core.session.KiteSessionService;
 import jakarta.persistence.EntityManagerFactory;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.quantraksha.kite.core.TradeCalculatorsTest
--------------------------------------------------------------------------------
-Tests run: 18, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.066 s -- in com.quantraksha.kite.core.TradeCalculatorsTest

@@ -3,7 +3,7 @@ package com.quantraksha.kite.core.service;
 import com.quantraksha.kite.api.KiteApiException;
 import com.quantraksha.kite.core.model.Candle;
 import com.quantraksha.kite.core.model.Levels;
-import com.quantraksha.kite.session.KiteSessionService;
+import com.quantraksha.kite.core.session.KiteSessionService;
 import com.zerodhatech.models.HistoricalData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

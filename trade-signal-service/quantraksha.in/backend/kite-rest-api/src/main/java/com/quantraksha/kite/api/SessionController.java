@@ -1,8 +1,8 @@
 package com.quantraksha.kite.api;
 
 import com.quantraksha.kite.config.KiteProperties;
-import com.quantraksha.kite.session.KiteSessionService;
-import com.quantraksha.kite.session.KiteSessionService.Session;
+import com.quantraksha.kite.core.session.KiteSessionService;
+import com.quantraksha.kite.core.session.KiteSessionService.Session;
 import java.net.URI;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

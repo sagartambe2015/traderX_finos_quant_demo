@@ -2,7 +2,7 @@ package com.quantraksha.kite.api;
 
 import com.quantraksha.kite.core.model.Levels;
 import com.quantraksha.kite.core.service.LevelCalculatorService;
-import com.quantraksha.kite.session.KiteSessionService;
+import com.quantraksha.kite.core.session.KiteSessionService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

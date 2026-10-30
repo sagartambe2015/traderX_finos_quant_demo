@@ -1,7 +1,7 @@
 package com.quantraksha.kite.persist.repository;
 
-import com.quantraksha.kite.persist.GoNoDecision;
-import com.quantraksha.kite.persist.TradeCaptureEntity;
+import com.quantraksha.kite.persist.entity.GoNoDecision;
+import com.quantraksha.kite.persist.entity.TradeCaptureEntity;
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;

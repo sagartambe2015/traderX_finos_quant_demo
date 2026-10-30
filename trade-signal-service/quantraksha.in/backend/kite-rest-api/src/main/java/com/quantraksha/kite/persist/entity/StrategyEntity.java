@@ -1,4 +1,4 @@
-package com.quantraksha.kite.persist;
+package com.quantraksha.kite.persist.entity;
 
 
 import jakarta.persistence.*;

@@ -1,6 +1,6 @@
 package com.quantraksha.kite.persist.repository;
 
-import com.quantraksha.kite.persist.StrategyEntity;
+import com.quantraksha.kite.persist.entity.StrategyEntity;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
