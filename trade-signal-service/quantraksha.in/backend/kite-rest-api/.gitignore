@@ -1,0 +1,8 @@
+# Ignore everything in this directory except the paths listed below.
+/*
+
+!/.gitignore
+!/src/
+!/pom.xml
+!/database/
+!/run_backend.sh
