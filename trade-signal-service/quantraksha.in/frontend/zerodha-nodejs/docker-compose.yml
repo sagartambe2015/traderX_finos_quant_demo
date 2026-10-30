@@ -1,0 +1,23 @@
+# Works locally (`docker compose up --build`) and as a Dokploy "Compose" service.
+# In Dokploy, set the variables below in the service's Environment tab and attach a domain
+# pointing at port 4000.
+services:
+  kite-dashboard:
+    build: .
+    restart: unless-stopped
+    environment:
+      KITE_API_KEY: ${KITE_API_KEY:?set KITE_API_KEY}
+      KITE_API_SECRET: ${KITE_API_SECRET:?set KITE_API_SECRET}
+      DASHBOARD_USER: ${DASHBOARD_USER:-admin}
+      DASHBOARD_PASSWORD: ${DASHBOARD_PASSWORD:?set DASHBOARD_PASSWORD}
+      PUBLIC_URL: ${PUBLIC_URL:-http://localhost:4000}
+    volumes:
+      - kite-data:/app/data
+    expose:
+      - "4000"
+    ports:
+      # Local testing only; remove when Dokploy's Traefik routes the domain.
+      - "127.0.0.1:4000:4000"
+
+volumes:
+  kite-data:

@@ -1,0 +1,38 @@
+server:
+  # Localhost only by default: these endpoints expose positions and the Kite session
+  address: ${HOST:127.0.0.1}
+  port: ${PORT:4100}
+
+spring:
+  mvc:
+    converters:
+      preferred-json-mapper: gson
+  gson:
+    serialize-nulls: true
+    disable-html-escaping: true
+    date-format: "yyyy-MM-dd'T'HH:mm:ssXXX"
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://192.168.1.40:5432/trade_database}
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 1
+  jpa:
+    open-in-view: false
+    hibernate:
+      # none: Hibernate won't create or check tables; schema.sql / migrations own the schema
+      ddl-auto: ${JPA_DDL_AUTO:none}
+    properties:
+      hibernate:
+        jdbc.time_zone: Asia/Kolkata
+    show-sql: ${JPA_SHOW_SQL:false}
+
+kite:
+  api-key: t84dt5r1xj0ftdoo
+  api-secret: qr99zvdhyq23a6ny8lpatrr4s0omzrjs
+  # Point at frontend/zerodha-nodejs/access_token.txt to share one daily login with the Node relay
+  token-file:
+  # Where /api/callback sends the browser after a successful login
+  ui-url: ${UI_URL:http://localhost:5173/}
+  cors-origins: ${CORS_ORIGINS:http://localhost:5173,http://127.0.0.1:5173}

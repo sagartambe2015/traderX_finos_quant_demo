@@ -1,0 +1,11 @@
+**/node_modules
+web/dist
+.env
+access_token.txt
+watchlist.json
+portfolio.json
+data
+*.log
+.git
+Dockerfile
+docker-compose.yml

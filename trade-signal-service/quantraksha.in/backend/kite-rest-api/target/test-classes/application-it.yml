@@ -1,0 +1,16 @@
+# Profile for *IT tests: in-memory H2 instead of the real Postgres, dummy Kite credentials.
+spring:
+  datasource:
+    url: jdbc:h2:mem:kite-it;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      # Builds the tables from the entities, so the IT also checks the JPA mappings
+      ddl-auto: create-drop
+
+kite:
+  api-key: it-api-key
+  api-secret: it-api-secret
+  token-file: ${java.io.tmpdir}/kite-rest-api-it-access_token.txt

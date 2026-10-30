@@ -1,0 +1,27 @@
+{
+  "accounts": [
+    {
+      "id": "4aef0e45",
+      "name": "CRUDE-1LAC",
+      "capital": 100000
+    }
+  ],
+  "strategies": [
+    {
+      "id": "48452907",
+      "name": "2D-HL",
+      "accountId": "4aef0e45",
+      "rules": [
+        "2D HIGH + 0.4% LONG POSITION"
+      ]
+    },
+    {
+      "id": "c5f0b0ca",
+      "name": "4H-HL CRUDE - HEDGE",
+      "accountId": "4aef0e45",
+      "rules": []
+    }
+  ],
+  "overrides": {},
+  "journal": []
+}
