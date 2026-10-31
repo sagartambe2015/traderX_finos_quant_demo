@@ -38,4 +38,5 @@ public interface TradeCaptureRepository extends JpaRepository<TradeCaptureEntity
             String security,
             String instrumentId
     );
+
 }
