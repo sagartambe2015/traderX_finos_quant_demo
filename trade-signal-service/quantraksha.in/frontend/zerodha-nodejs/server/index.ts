@@ -17,6 +17,7 @@ const HOST = process.env.HOST ?? "127.0.0.1";
 const PUBLIC_URL = process.env.PUBLIC_URL?.replace(/\/+$/, "");
 const WEB_URL = process.env.WEB_URL ?? PUBLIC_URL ?? "http://localhost:5173";
 const WEB_DIST = path.join(__dirname, "..", "web", "dist");
+const KITE_REST_URL = process.env.KITE_REST_URL ?? "http://127.0.0.1:4100";
 
 const DASHBOARD_USER = process.env.DASHBOARD_USER || "admin";
 const DASHBOARD_PASSWORD = process.env.DASHBOARD_PASSWORD ?? "";
@@ -98,6 +99,16 @@ app.get("/api/callback", async (req, res) => {
     console.error("Login callback failed:", err?.message ?? err);
   }
   res.redirect(WEB_URL);
+});
+
+/** Saved signals live in kite-rest-api's database; the relay only passes them through. */
+app.get("/api/getAllTradesAndPosition", async (_req, res) => {
+  try {
+    const upstream = await fetch(`${KITE_REST_URL}/api/getAllTradesAndPosition`);
+    res.status(upstream.status).type("json").send(await upstream.text());
+  } catch {
+    res.status(502).json({ error: `kite-rest-api is not reachable at ${KITE_REST_URL}` });
+  }
 });
 
 app.post("/api/watchlist", async (req, res) => {

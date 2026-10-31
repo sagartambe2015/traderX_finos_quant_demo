@@ -6,13 +6,15 @@ import { PositionsTable, totalPnl } from "./components/Positions";
 import { Returns } from "./components/Returns";
 import { Manage } from "./components/Manage";
 import { Journal } from "./components/Journal";
+import { TradeCaptures } from "./components/TradeCaptures";
 import { fmtSigned, signClass } from "./format";
 
-type View = "live" | "portfolio";
+type View = "live" | "portfolio" | "trades";
 
 function savedView(): View {
   try {
-    return localStorage.getItem("view") === "portfolio" ? "portfolio" : "live";
+    const saved = localStorage.getItem("view");
+    return saved === "portfolio" || saved === "trades" ? saved : "live";
   } catch {
     return "live";
   }
@@ -48,9 +50,9 @@ export default function App() {
         <div className="topbar-left">
           <h1>Kite Dashboard</h1>
           <nav className="tabs" role="tablist">
-            {(["live", "portfolio"] as const).map((v) => (
+            {(["live", "portfolio", "trades"] as const).map((v) => (
               <button key={v} role="tab" aria-selected={view === v} className={view === v ? "active" : ""} onClick={() => setView(v)}>
-                {v === "live" ? "Live" : "Portfolio"}
+                {v === "live" ? "Live" : v === "portfolio" ? "Portfolio" : "Trades"}
               </button>
             ))}
           </nav>
@@ -71,7 +73,12 @@ export default function App() {
 
       {status?.error && <div className="banner">{status.error}</div>}
 
-      {socket !== "open" ? (
+      {view === "trades" ? (
+        // Comes from kite-rest-api's database, so it doesn't need a Kite login
+        <main className="stack-page">
+          <TradeCaptures />
+        </main>
+      ) : socket !== "open" ? (
         <div className="empty">
           Can't reach the relay server. Start it with <code>npm run dev</code> in <code>frontend/zerodha-nodejs/</code>.
         </div>

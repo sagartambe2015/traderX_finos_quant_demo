@@ -182,6 +182,7 @@ Optional environment variables (set them in `.env`):
 | --- | --- | --- |
 | `PORT` | `4000` | Relay server port. If you change it, also update the proxy in `web/vite.config.ts`. |
 | `WEB_URL` | `http://localhost:5173` | Where `/api/callback` redirects after login. Set it to `http://127.0.0.1:4000` when using `npm run serve`. |
+| `KITE_REST_URL` | `http://127.0.0.1:4100` | Where the relay reads the Trades tab's data (`kite-rest-api`). |
 
 ---
 
