@@ -61,8 +61,8 @@ public class KiteSessionService {
             session = new Session(null, profile.userName);
             log.info("Restored Kite session for {} from {}", profile.userName, tokenFile);
         } catch (TokenException e) {
-            log.info("Saved access token is expired or invalid; deleting {}", tokenFile);
-            deleteTokenFile();
+            log.info("Saved access token in {} is expired or invalid", tokenFile);
+            clear();
         } catch (KiteException e) {
             log.warn("Could not validate saved token: {}", e.message);
         } catch (IOException | JSONException e) {
@@ -131,14 +131,18 @@ public class KiteSessionService {
     }
 
     private void clear() {
+        String rejected = kite.getAccessToken();
         session = null;
         kite.setAccessToken(null);
-        deleteTokenFile();
+        deleteTokenFile(rejected);
     }
 
-    private void deleteTokenFile() {
+    /** The Node relay writes this file too, so keep it if it now holds a newer token than the one rejected. */
+    private void deleteTokenFile(String rejected) {
         try {
-            Files.deleteIfExists(tokenFile);
+            if (Files.exists(tokenFile) && Files.readString(tokenFile, StandardCharsets.UTF_8).trim().equals(rejected)) {
+                Files.delete(tokenFile);
+            }
         } catch (IOException e) {
             log.warn("Could not delete {}: {}", tokenFile, e.toString());
         }

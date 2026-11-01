@@ -17,7 +17,7 @@ This is one sub-project of the larger `trading-automation` monorepo (sibling dir
 npm install && npm --prefix web install
 cp .env.example .env           # then fill in KITE_API_KEY / KITE_API_SECRET
 
-./run.sh [dev|prod|login]      # one-shot: checks Node/.env, installs deps if needed, then runs the matching npm script
+./run_frontend.sh [dev|prod|login]      # one-shot: checks Node/.env, installs deps if needed, then runs the matching npm script
 npm run dev                    # relay on 127.0.0.1:4000 (tsx watch) + Vite UI on :5173, together
 npm run server / npm run web   # either half alone
 npm run typecheck              # tsc for server/shared/test.ts, then for web/

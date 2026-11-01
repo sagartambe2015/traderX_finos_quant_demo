@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Run the Kite live dashboard (relay + web UI).
 #
-#   ./run.sh            dev mode: relay on 127.0.0.1:4000 + Vite UI on :5173 (hot reload)
-#   ./run.sh prod       build web/ and serve everything from the relay on :4000
-#   ./run.sh login [request_token]   CLI login script (test.ts)
+#   ./run_frontend.sh            dev mode: relay on 127.0.0.1:4000 + Vite UI on :5173 (hot reload)
+#   ./run_frontend.sh prod       build web/ and serve everything from the relay on :4000
+#   ./run_frontend.sh login [request_token]   CLI login script (test.ts)
 set -euo pipefail
 
 cd "$(dirname "$0")"

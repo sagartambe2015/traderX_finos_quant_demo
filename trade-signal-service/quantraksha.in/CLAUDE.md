@@ -20,7 +20,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Run these from `frontend/zerodha-nodejs/`:
 
 ```bash
-./run.sh [dev|prod|login]   # checks Node >= 20.6 and .env, installs deps, then runs
+./run_frontend.sh [dev|prod|login]   # checks Node >= 20.6 and .env, installs deps, then runs
 npm run dev                 # relay on 127.0.0.1:4000 + Vite on :5173
 npm run typecheck           # the only automated check; there are no tests or linter
 ```

@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Table(name = "trade_capture")
@@ -99,6 +100,14 @@ public class TradeCaptureEntity {
 
     @Column(name = "SignalTimestamp", updatable = false)
     private LocalDateTime captureTimestamp = LocalDateTime.now();
+
+
+    //TODO: Add ReferenceCandleData mapping here if needed in future
+    /**Objective: This class is used to store the reference candle data for a trade capture for a strategy.
+     * This data is used to relate the trade capture with the reference candle data for a strategy.
+     * Hence this will be one to many relationship with the ReferenceCandleData entity.
+        private List<ReferenceCandleData> referenceCandleData;
+     */
 
     // Constructors
     public TradeCaptureEntity() {}

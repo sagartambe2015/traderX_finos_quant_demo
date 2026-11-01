@@ -24,6 +24,7 @@ class TradeCaptureToTradingMapperTest {
         c.setCalcTargetPrice(24342);
         c.setCalcStopLoss(23741);
         c.setCalcTrailingStopLoss(23776);
+        c.setLotSize(65);
         return c;
     }
 
@@ -31,7 +32,7 @@ class TradeCaptureToTradingMapperTest {
         Instrument i = new Instrument();
         i.instrument_token = 15736578;
         i.tradingsymbol = "NIFTY25NOVFUT";
-        i.lot_size = 75;
+
         return i;
     }
 
@@ -43,8 +44,8 @@ class TradeCaptureToTradingMapperTest {
         assertThat(entity.getSecurity()).isEqualTo("NIFTY25NOVFUT");
         assertThat(entity.getInstrumentId()).isEqualTo("15736578");
         assertThat(entity.getSide()).isEqualTo(TradeSide.LONG);
-        assertThat(entity.getLotSize()).isEqualTo(75);
-        assertThat(entity.getTargetQuantity()).isEqualByComparingTo("75");
+        assertThat(entity.getLotSize()).isEqualTo(65);
+        assertThat(entity.getTargetQuantity()).isEqualByComparingTo("0");
         assertThat(entity.getCalcEntry()).isEqualByComparingTo("24041");
         assertThat(entity.getCalcTg()).isEqualByComparingTo("24342");
         assertThat(entity.getCalcSl()).isEqualByComparingTo("23741");

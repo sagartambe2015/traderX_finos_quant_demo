@@ -10,7 +10,7 @@ public class CrudeOilMTradeCalculator extends ITradeCalculator{
 
     private final static double entryBuffer = 0.4;
     private final static double exitBuffer = 4;
-    private final static int LOT_SIZE = 100;
+    private final static int LOT_SIZE = 10;
 
     public CrudeOilMTradeCalculator() {
         setStrategyName("CRUDEOIL-M-FUTURE-HH-LL");

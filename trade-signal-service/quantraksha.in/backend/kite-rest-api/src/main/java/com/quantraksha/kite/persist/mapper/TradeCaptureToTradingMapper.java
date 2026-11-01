@@ -26,7 +26,7 @@ public class TradeCaptureToTradingMapper {
         entity.setInstrumentId(tradeCapture.getInstrumentToken());
         // Every calculator produces a long breakout: entry above HH, target above entry
         entity.setSide(TradeSide.LONG);
-        entity.setLotSize(instrument.lot_size);
+        entity.setLotSize(tradeCapture.getLotSize());
         entity.setTargetQuantity(BigDecimal.valueOf(instrument.lot_size));
 
         // One lot until the calculators size positions from riskForTrade

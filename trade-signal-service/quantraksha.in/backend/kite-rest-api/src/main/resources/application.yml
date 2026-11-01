@@ -34,8 +34,8 @@ spring:
 kite:
   api-key: t84dt5r1xj0ftdoo
   api-secret: qr99zvdhyq23a6ny8lpatrr4s0omzrjs
-  # Point at frontend/zerodha-nodejs/access_token.txt to share one daily login with the Node relay
-  token-file:
+  # Shared with the Node relay, so one daily login covers both and survives restarts
+  token-file: ${KITE_TOKEN_FILE:/Users/sagar/developement/trading-project/traderX_finos_quant_demo/trade-signal-service/quantraksha.in/frontend/zerodha-nodejs/access_token.txt}
   # Where /api/callback sends the browser after a successful login
   ui-url: ${UI_URL:http://localhost:5173/}
   cors-origins: ${CORS_ORIGINS:http://localhost:5173,http://127.0.0.1:5173}

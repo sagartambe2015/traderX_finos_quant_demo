@@ -29,6 +29,9 @@ public class StrategyEntity {
     @OneToMany(mappedBy = "strategyEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<TradeCaptureEntity> tradeCaptureEntities = new ArrayList<>();
 
+
+
+
     // Constructors
     public StrategyEntity() {}
 
@@ -85,4 +88,13 @@ public class StrategyEntity {
     public void setTradeCaptures(List<TradeCaptureEntity> tradeCaptureEntities) {
         this.tradeCaptureEntities = tradeCaptureEntities;
     }
+
+    //TODO: Add StudyResearchBackEntity mapping here if needed in future
+    /**Reference to the study, research, backtest and signal ids for a strategy StrategyEntity
+     * Objective: This class is used to store the study, research, backtest and signal ids for a strategy.
+     *TODO: Add the following fields to relate study, research, backtest and signal ids for a strategy.
+     * //    // StrategyENtity will have a one-to-many relationship with StudyResearchBackEntity.
+     * //    @OneToMany(mappedBy = "strategyEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+     * //    private List<StudyResearchBackEntity> studyResearchBackEntities = new ArrayList<>();
+     */
 }
