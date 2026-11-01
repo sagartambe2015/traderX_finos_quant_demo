@@ -41,7 +41,7 @@ load_env_var() {
   [[ -n "${!var:-}" ]] && return 0
   for file in .env "$dashboard_dir/.env"; do
     [[ -f "$file" ]] || continue
-    value="$(grep -E "^${var}=" "$file" | tail -n 1 | cut -d= -f2- | sed -E 's/^["'\'']//; s/["'\'']$//')"
+    value="$(grep -E "^${var}=" "$file" | tail -n 1 | cut -d= -f2- | sed -E 's/^["'\'']//; s/["'\'']$//' || true)"
     if [[ -n "$value" ]]; then
       export "$var=$value"
       return 0
